@@ -1062,6 +1062,106 @@ footer small {
     color: var(--muted)
 }
 
+.contact-lower {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 50px 5vw 35px;
+    max-width: var(--max);
+    margin: auto;
+    border-top: 1px solid var(--line)
+}
+
+.contact-lower-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px
+}
+
+.mini-brand {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(128, 212, 207, .3);
+    border-radius: 50%;
+    background: rgba(128, 212, 207, .08);
+    color: var(--accent);
+    font-size: 18px
+}
+
+.contact-lower-brand strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px
+}
+
+.contact-lower-brand small {
+    display: block;
+    font-size: 11px;
+    color: var(--muted)
+}
+
+.contact-action {
+    text-align: center
+}
+
+.contact-action p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 16px
+}
+
+.contact-cta {
+    display: flex;
+    justify-content: center
+}
+
+.follow-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px
+}
+
+.follow-wrap p {
+    font-size: 12px;
+    margin: 0;
+    color: var(--muted)
+}
+
+.social-strip {
+    display: flex;
+    gap: 16px;
+    justify-content: center
+}
+
+.social-strip a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(128, 212, 207, .2);
+    border-radius: 8px;
+    background: rgba(128, 212, 207, .06);
+    color: var(--accent);
+    transition: all .3s ease;
+    cursor: pointer
+}
+
+.social-strip a:hover {
+    background: rgba(128, 212, 207, .15);
+    border-color: rgba(128, 212, 207, .5);
+    transform: translateY(-2px)
+}
+
+.social-strip a svg {
+    width: 16px;
+    height: 16px
+}
+
 .page-head,
 .detail,
 .admin {
@@ -1671,6 +1771,30 @@ footer small {
     .footer-links,
     footer small {
         margin-top: 20px
+    }
+    .contact-lower {
+        display: block;
+        padding: 40px 20px;
+        gap: 0
+    }
+    .contact-lower-brand {
+        margin-bottom: 32px;
+        justify-content: center
+    }
+    .contact-lower-brand div {
+        text-align: center
+    }
+    .contact-action {
+        margin-bottom: 32px;
+        text-align: center
+    }
+    .contact-action p {
+        margin-bottom: 16px
+    }
+    .follow-wrap {
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid var(--line)
     }
     .page-head,
     .detail,
