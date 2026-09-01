@@ -1632,36 +1632,151 @@ footer small {
 }
 
 .detail {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: auto
 }
 
+.detail-header {
+    margin-bottom: 26px
+}
+
+.detail .eyebrow {
+    margin-bottom: 10px;
+    color: var(--accent)
+}
+
+.detail h1 {
+    margin: 0 0 16px;
+    font-size: clamp(2.6rem, 4.8vw, 4.6rem);
+    line-height: .96;
+    letter-spacing: -.05em
+}
+
 .detail-lede {
-    font-size: 19px;
-    max-width: 600px
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.7;
+    max-width: 760px;
+    color: rgba(234, 239, 245, .82)
 }
 
 .gallery {
-    margin: 50px 0
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(220px, .72fr);
+    gap: 18px;
+    margin: 32px 0 22px;
+    align-items: stretch
 }
 
 .gallery>img {
     width: 100%;
-    max-height: 580px;
+    height: 100%;
+    max-height: 500px;
+    min-height: 340px;
     object-fit: cover;
-    border: 1px solid var(--line)
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background: rgba(9, 17, 29, .75);
+    box-shadow: 0 20px 35px rgba(7, 12, 20, .18)
+}
+
+.gallery>div {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    align-content: start
+}
+
+.gallery button {
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(18, 24, 38, .7);
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease
+}
+
+.gallery button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(128, 212, 207, .5)
+}
+
+.gallery button.active {
+    border-color: rgba(128, 212, 207, .9);
+    box-shadow: 0 0 0 1px rgba(128, 212, 207, .55)
+}
+
+.gallery button img {
+    display: block;
+    width: 100%;
+    height: 102px;
+    object-fit: cover;
+    opacity: .78
+}
+
+.gallery button.active img {
+    opacity: 1
 }
 
 .project-video {
+    display: block;
     width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(9, 17, 29, .75);
     margin: 40px 0
 }
 
 .detail-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 28px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(12, 18, 28, .56);
+    padding: 24px 22px
+}
+
+.detail-columns>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.detail-columns .eyebrow {
+    margin-bottom: 8px;
+    color: var(--accent)
+}
+
+.detail-columns h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.9rem, 2.5vw, 2.8rem);
+    line-height: 1.05
+}
+
+.detail-columns p {
+    margin: 0;
+    color: rgba(234, 239, 245, .8);
+    line-height: 1.8
+}
+
+.detail-columns .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px
+}
+
+.detail-columns .badges {
+    margin-top: 18px
+}
+
+.reviews {
     border-top: 1px solid var(--line);
+    margin-top: 55px;
     padding-top: 35px
 }
 
@@ -1933,11 +2048,26 @@ footer small {
         gap: 8px;
         flex-direction: column
     }
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 12px
+    }
+    .gallery>img {
+        min-height: 260px
+    }
+    .gallery>div {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px
+    }
+    .gallery button img {
+        height: 90px
+    }
     .detail-columns {
-        display: block
+        display: block;
+        padding: 20px 18px
     }
     .detail-columns>div+div {
-        margin-top: 30px
+        margin-top: 24px
     }
     footer {
         display: block;
