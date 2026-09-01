@@ -890,15 +890,15 @@ h3 {
 .all-projects {
     grid-column: 1/-1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px
 }
 
 .ds-card,
 .project-card {
     border: 1px solid var(--line);
     background: rgba(18, 24, 38, .6);
-    transition: .3s
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease
 }
 
 .ds-card {
@@ -908,7 +908,8 @@ h3 {
 .ds-card:hover,
 .project-card:hover {
     border-color: rgba(128, 212, 207, .55);
-    transform: translateY(-4px)
+    transform: translateY(-4px);
+    box-shadow: 0 24px 40px rgba(4, 10, 18, .18)
 }
 
 .ds-card h4 {
@@ -924,11 +925,15 @@ h3 {
 
 .project-card {
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%
 }
 
 .project-art {
-    height: 180px;
+    height: 210px;
     position: relative;
     display: grid;
     place-items: center;
@@ -940,42 +945,65 @@ h3 {
 .project-art img {
     width: 100%;
     height: 100%;
-    object-fit: cover
+    object-fit: cover;
+    transform: scale(1.04);
+    transition: transform .5s ease
+}
+
+.project-card:hover .project-art img {
+    transform: scale(1.12)
 }
 
 .project-art span {
     position: absolute;
     left: 17px;
     top: 15px;
-    font: 11px 'DM Mono'
+    font: 11px 'DM Mono';
+    color: var(--text)
 }
 
 .project-info {
-    padding: 23px;
-    position: relative
+    padding: 22px 22px 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1
 }
 
 .project-info h3 {
+    margin: 0;
     font-size: 20px;
-    line-height: 1.25
+    line-height: 1.25;
+    letter-spacing: -.02em;
+    color: var(--text)
 }
 
 .project-info .eyebrow {
-    margin-bottom: 12px
+    margin: 0;
+    color: var(--accent)
+}
+
+.project-info p:not(.eyebrow) {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(234, 239, 245, .82)
 }
 
 .badges {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 19px
+    margin-top: 8px
 }
 
 .badges span {
     font: 10px 'DM Mono';
     padding: 6px 8px;
-    border: 1px solid var(--line);
-    color: var(--muted)
+    border: 1px solid rgba(128, 212, 207, .18);
+    background: rgba(128, 212, 207, .04);
+    color: var(--muted);
+    border-radius: 999px
 }
 
 .project-arrow {
@@ -988,6 +1016,150 @@ h3 {
 .contact {
     grid-template-columns: 1fr 1fr;
     background: rgba(16, 23, 34, .5)
+}
+
+.contact-intro {
+    max-width: 480px
+}
+
+.contact-copy {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.8
+}
+
+.contact-badge {
+    margin-top: 35px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 430px;
+    padding: 18px 24px;
+    border: 1px solid rgba(128, 212, 207, .24);
+    border-radius: 18px;
+    background: rgba(128, 212, 207, .04)
+}
+
+.badge-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    background: rgba(128, 212, 207, .1);
+    border: 1px solid rgba(128, 212, 207, .35);
+    color: var(--accent);
+    font-size: 1.2rem
+}
+
+.contact-badge strong {
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 1.02rem
+}
+
+.contact-panel {
+    border: 1px solid rgba(148, 163, 184, .18);
+    border-radius: 20px;
+    background: rgba(9, 17, 29, .6);
+    box-shadow: inset 0 1px 0 rgba(148, 163, 184, .06), 0 20px 60px rgba(2, 6, 23, .35);
+    padding: 24px 22px 8px
+}
+
+.contact-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px
+}
+
+.contact-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    background: rgba(128, 212, 207, .08);
+    border: 1px solid rgba(128, 212, 207, .28);
+    color: var(--accent);
+    font-size: 1.3rem
+}
+
+.contact-panel-head h3 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2vw, 2.5rem);
+    letter-spacing: -.04em;
+    color: var(--text)
+}
+
+.contact-panel>p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    max-width: 540px
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 12px
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(148, 163, 184, .12);
+    color: var(--text);
+    transition: transform .2s ease, border-color .2s ease
+}
+
+.contact-row:hover {
+    transform: translateX(2px);
+    border-color: rgba(128, 212, 207, .3)
+}
+
+.contact-row-main {
+    display: flex;
+    align-items: center;
+    gap: 14px
+}
+
+.contact-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    color: var(--accent);
+    background: rgba(128, 212, 207, .06);
+    border: 1px solid rgba(128, 212, 207, .18)
+}
+
+.contact-row strong {
+    display: block;
+    font-size: 1.04rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--text)
+}
+
+.contact-row small {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: .85rem
+}
+
+.contact-row svg:last-child {
+    color: var(--accent);
+    opacity: .9
 }
 
 .contact-side {
@@ -1700,9 +1872,11 @@ footer small {
         grid-column: 3;
         grid-row: 1
     }
-    .ds-grid,
     .project-grid,
     .all-projects {
+        grid-template-columns: 1fr
+    }
+    .ds-grid {
         grid-template-columns: 1fr
     }
     .eiva-content {
@@ -1724,6 +1898,10 @@ footer small {
         min-height: 0;
         padding: 85px 20px
     }
+    .project-grid,
+    .all-projects {
+        grid-template-columns: 1fr
+    }
     .education-heading {
         padding-bottom: 38px
     }
@@ -1733,18 +1911,15 @@ footer small {
     .education-lede {
         font-size: 16px
     }
-    .education-columns {
+    .education-card-grid {
         grid-template-columns: 1fr;
         gap: 14px;
         margin-top: 38px
     }
-    .education-columns>article {
+    .edu-institution,
+    .edu-focus {
         min-height: 0;
-        padding: 26px 22px 48px
-    }
-    .education-meta {
-        gap: 28px;
-        margin-top: 30px
+        padding: 20px 18px
     }
     .focus-grid {
         grid-template-columns: 1fr 1fr;
@@ -1753,10 +1928,10 @@ footer small {
     .focus-grid li {
         font-size: 14px
     }
-    .education-institution:after,
-    .education-focus:after,
-    .education-project:after {
-        display: none
+    .education-card-top {
+        align-items: flex-start;
+        gap: 8px;
+        flex-direction: column
     }
     .detail-columns {
         display: block
@@ -1771,6 +1946,34 @@ footer small {
     .footer-links,
     footer small {
         margin-top: 20px
+    }
+    .contact-panel {
+        padding: 20px 16px 8px
+    }
+    .contact-row {
+        gap: 12px;
+        padding: 12px 0
+    }
+    .contact-row-main {
+        gap: 10px;
+        align-items: flex-start;
+        min-width: 0
+    }
+    .contact-icon {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0
+    }
+    .contact-row strong {
+        font-size: .96rem
+    }
+    .contact-row small {
+        font-size: .78rem
+    }
+    .contact-row svg:last-child {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0
     }
     .contact-lower {
         display: block;
@@ -1795,6 +1998,14 @@ footer small {
         margin-top: 32px;
         padding-top: 32px;
         border-top: 1px solid var(--line)
+    }
+    .social-strip {
+        gap: 12px;
+        flex-wrap: wrap
+    }
+    .social-strip a {
+        width: 40px;
+        height: 40px
     }
     .page-head,
     .detail,
